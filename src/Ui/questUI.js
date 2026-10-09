@@ -10,6 +10,16 @@ import {
     MessageFlags,
 } from 'discord.js';
 
+export function buildLinkPrompt() {
+    const c = new ContainerBuilder().setAccentColor(0xED4245);
+    c.addTextDisplayComponents(
+        new TextDisplayBuilder().setContent(
+            `# 🔒 Account Not Linked\nPlease link your account first using the \`;link\` command!`
+        )
+    );
+    return { components: [c], flags: MessageFlags.IsComponentsV2 | MessageFlags.Ephemeral };
+}
+
 export function buildNoQuestsCard() {
     const c = new ContainerBuilder().setAccentColor(0x4F545C);
     c.addTextDisplayComponents(
