@@ -107,3 +107,8 @@ export async function handleLinkModal(interaction, client) {
         await interaction.editReply('❌ Token Rejected by Discord!');
     }
 }
+
+export async function handleLinkPromptButton(interaction, client) {
+    const modal = buildLinkModal(0);
+    await interaction.showModal(modal);
+}
