@@ -25,6 +25,10 @@ export function makeTokenStore() {
     };
 }
 
+export async function runAutoquestForUser(userId, tokenStore, send) {
+    return await runQuestAll(userId, tokenStore, send);
+}
+
 export const questCmd = {
     data: new SlashCommandBuilder().setName('quest').setDescription('Pick and complete one Discord quest'),
     prefix: 'quest',
