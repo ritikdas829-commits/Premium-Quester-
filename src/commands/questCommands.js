@@ -6,6 +6,25 @@ import { PREFIX } from '../utils/config.js';
 import { sanitizeToken, isValidUserToken } from '../utils/tokenHelper.js';
 import { getAllowedSlots } from '../quest/slotAccess.js';
 
+export function makeTokenStore() {
+    const store = new Map();
+    return {
+        getActiveToken: (userId) => store.get(`${userId}_active`),
+        getAll: (userId) => {
+            const res = [];
+            for (let i = 0; i < 5; i++) {
+                const token = store.get(`${userId}_${i}`);
+                if (token) res.push({ username: 'LinkedUser', token });
+            }
+            return res;
+        },
+        save: (userId, slot, token) => {
+            store.set(`${userId}_${slot}`, token);
+            store.set(`${userId}_active`, token);
+        }
+    };
+}
+
 export const questCmd = {
     data: new SlashCommandBuilder().setName('quest').setDescription('Pick and complete one Discord quest'),
     prefix: 'quest',
