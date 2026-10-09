@@ -1,4 +1,4 @@
-import { ComponentType, MessageFlags } from 'discord.js';
+import { ComponentType, MessageFlags, ContainerBuilder, TextDisplayBuilder } from 'discord.js';
 import { QuestClient } from './questClient.js';
 import { Quest } from './quest.js';
 import { disableAutoquest, enableAutoquest, isAutoquestEnabled } from './autoquestStore.js';
@@ -10,8 +10,8 @@ import {
     buildErrorCard, 
     buildQuestSelectCard, 
     buildQuestInfoCard 
-} from '../ui/questUI.js';
-import { buildQuestListCard, buildMoreQuestsCard } from '../ui/questListUI.js';
+} from '../Ui/questUI.js';
+import { buildQuestListCard, buildMoreQuestsCard } from '../Ui/questListUI.js';
 
 export async function runQuestOne(userId, tokenStore, send) {
     const token = tokenStore.getActiveToken(userId);
